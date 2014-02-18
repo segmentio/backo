@@ -1,4 +1,3 @@
-
 # backo
 
   Simple exponential backoff because the others seem to have weird abstractions.
@@ -19,7 +18,7 @@ $ npm install backo
 ## Example
 
 ```js
-var Backoff = require('backoff');
+var Backoff = require('backo');
 var backoff = new Backoff({ min: 100, max: 20000 });
 
 setTimeout(function(){
