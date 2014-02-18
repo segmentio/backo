@@ -1,0 +1,13 @@
+{
+  "name": "backo",
+  "version": "0.0.1",
+  "repository": "segmentio/backo",
+  "description": "simple backoff without the weird abstractions",
+  "keywords": ["backoff"],
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "license": "MIT"
+}
