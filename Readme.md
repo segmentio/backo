@@ -19,7 +19,7 @@ $ npm install backo
 ## Example
 
 ```js
-var Backoff = require('backoff');
+var Backoff = require('backo');
 var backoff = new Backoff({ min: 100, max: 20000 });
 
 setTimeout(function(){
