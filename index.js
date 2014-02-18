@@ -10,6 +10,7 @@ module.exports = Backoff;
  *
  * - `min` initial timeout in milliseconds [100]
  * - `max` max timeout [10000]
+ * - `jitter` [0]
  * - `factor` [2]
  *
  * @param {Object} opts
@@ -21,6 +22,7 @@ function Backoff(opts) {
   this.ms = opts.min || 100;
   this.max = opts.max || 10000;
   this.factor = opts.factor || 2;
+  this.jitter = opts.jitter || 0;
   this.attempts = 0;
 }
 
@@ -33,6 +35,7 @@ function Backoff(opts) {
 
 Backoff.prototype.duration = function(){
   var ms = this.ms * Math.pow(this.factor, this.attempts++);
+  if (this.jitter) ms += Math.random() * this.jitter;
   return Math.min(ms, this.max);
 };
 

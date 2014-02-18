@@ -9,6 +9,13 @@
 $ npm install backo
 ```
 
+## Options
+
+ - `min` initial timeout in milliseconds [100]
+ - `max` max timeout [10000]
+ - `jitter` [0]
+ - `factor` [2]
+
 ## Example
 
 ```js
