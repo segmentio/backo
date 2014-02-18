@@ -36,7 +36,7 @@ function Backoff(opts) {
 Backoff.prototype.duration = function(){
   var ms = this.ms * Math.pow(this.factor, this.attempts++);
   if (this.jitter) ms += Math.random() * this.jitter;
-  return Math.min(ms, this.max);
+  return Math.min(ms, this.max) | 0;
 };
 
 /**
