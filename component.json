@@ -5,7 +5,7 @@
   "version": "1.0.1",
   "description": "simple backoff without the weird abstractions",
   "keywords": ["backoff"],
-  "licence": "MIT",
-  "scripts" ["index.js"],
+  "license": "MIT",
+  "scripts": ["index.js"],
   "main": "index.js"
 }
