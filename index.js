@@ -37,7 +37,7 @@ Backoff.prototype.duration = function(){
   var ms = this.ms * Math.pow(this.factor, this.attempts++);
   if (this.jitter) {
     var rand =  Math.random();
-    var deviation = rand * this.jitter * ms;
+    var deviation = Math.floor(rand * this.jitter * ms);
     ms = (Math.floor(rand * 10) & 1) == 0  ? ms - deviation : ms + deviation;
   }
   return Math.min(ms, this.max) | 0;
