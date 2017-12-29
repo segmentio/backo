@@ -1,3 +1,5 @@
+//DDEBUGGING - remove this entire thing
+
 /**
  * Expose `Backoff`.
  */
@@ -55,5 +57,6 @@ Backoff.prototype.backoff = function() {
  */
 
 Backoff.prototype.reset = function() {
+    this.ms = this.min;
     this.attempts = 0;
 };
