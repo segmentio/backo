@@ -1,3 +1,4 @@
+//DDEBUGGING - remove this entire thing
 
 /**
  * Expose `Backoff`.
@@ -18,29 +19,35 @@ module.exports = Backoff;
  */
 
 function Backoff(opts) {
-  opts = opts || {};
-  this.ms = opts.min || 100;
-  this.max = opts.max || 10000;
-  this.factor = opts.factor || 2;
-  this.jitter = opts.jitter > 0 && opts.jitter <= 1 ? opts.jitter : 0;
-  this.attempts = 0;
+    opts = opts || {};
+    this.min = opts.min || 100;
+    this.max = opts.max || 10000;
+    this.factor = opts.factor || 2;
+    this.jitter = opts.jitter > 0 && opts.jitter <= 1 ? opts.jitter : 0;
+    this.attempts = 0;
+    this.ms = this.min;
 }
 
 /**
- * Return the backoff duration.
+ * Calculate next backoff duration.
  *
  * @return {Number}
  * @api public
  */
 
-Backoff.prototype.duration = function(){
-  var ms = this.ms * Math.pow(this.factor, this.attempts++);
-  if (this.jitter) {
-    var rand =  Math.random();
-    var deviation = Math.floor(rand * this.jitter * ms);
-    ms = (Math.floor(rand * 10) & 1) == 0  ? ms - deviation : ms + deviation;
-  }
-  return Math.min(ms, this.max) | 0;
+Backoff.prototype.backoff = function() {
+    let currentMs = this.ms;
+    let nextMs = this.min * Math.pow(this.factor, this.attempts++);
+
+    if (this.jitter) {
+        let rand = Math.random();
+        let deviation = Math.floor(rand * this.jitter * nextMs);
+        nextMs = (Math.floor(rand * 10) & 1) == 0 ? nextMs - deviation : nextMs + deviation;
+    }
+
+    this.ms = Math.min(nextMs, this.max) | 0;
+
+    return currentMs;
 };
 
 /**
@@ -49,6 +56,7 @@ Backoff.prototype.duration = function(){
  * @api public
  */
 
-Backoff.prototype.reset = function(){
-  this.attempts = 0;
+Backoff.prototype.reset = function() {
+    this.ms = this.min;
+    this.attempts = 0;
 };

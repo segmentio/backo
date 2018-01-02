@@ -1,15 +1,16 @@
 {
-  "name": "backo",
-  "version": "1.1.0",
-  "repository": "segmentio/backo",
-  "description": "simple backoff without the weird abstractions",
-  "keywords": [
-    "backoff"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*"
-  },
-  "license": "MIT"
+    "name": "backo3",
+    "version": "1.0.0",
+    "repository": "d65vid/backo",
+    "description": "simple backoff without the weird abstractions",
+    "keywords": [
+        "backoff"
+    ],
+    "scripts": {"test": "node ./node_modules/mocha/bin/mocha"},
+    "dependencies": {},
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*"
+    },
+    "license": "MIT"
 }
